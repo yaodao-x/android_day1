@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HelloWorld</string>
+    <string name="button">Button</string>
+    <string name="todo">TODO</string>
+    <string name="ow">SWITCH</string>
+    <string name="select_work">请选择您最爱的职业：</string>
+    <string name="coder">程序员</string>
+    <string name="food">美食家</string>
+    <string name="writer">写作家</string>
+</resources>
