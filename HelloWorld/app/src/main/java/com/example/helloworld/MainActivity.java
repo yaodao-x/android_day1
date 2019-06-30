@@ -11,9 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.bluetooth.BluetoothAdapter;
 
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity  {
 
     private static final String TAG = "MainActivity";
     RadioGroup radioGroup;
