@@ -1,24 +1,28 @@
 package com.example.helloworld;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     RadioGroup radioGroup;
     RadioButton radioButton1;
     RadioButton radioButton2;
     RadioButton radioButton3;
+    RadioGroup radioGroup1;
+    CheckBox checkBox1;
+    CheckBox checkBox2;
+    CheckBox checkBox3;
     Switch swt_xjp;
     Button btn_xjp;
     TextView textView;
@@ -31,6 +35,10 @@ public class MainActivity extends AppCompatActivity  {
         radioButton1 = findViewById(R.id.radio_button1);
         radioButton2 = findViewById(R.id.radio_button2);
         radioButton3 = findViewById(R.id.radio_button3);
+        radioGroup1 = findViewById(R.id.number_list);
+        checkBox1 = findViewById(R.id.checkBox);
+        checkBox2 = findViewById(R.id.checkBox2);
+        checkBox3 = findViewById(R.id.checkBox3);
         swt_xjp = findViewById(R.id.switch_xjp);
         btn_xjp = findViewById(R.id.button_xjp);
         textView = findViewById(R.id.textView);
@@ -41,6 +49,7 @@ public class MainActivity extends AppCompatActivity  {
                 getYourFavorite(checkedId);
             }
         });
+
 
         //button监听
         btn_xjp.setOnClickListener(new View.OnClickListener() {
@@ -65,28 +74,47 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-    }
+        //checkbox
+        checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                int sum = 0;
+                for (int i = 0; i < radioGroup1.getChildCount(); i++) {
+                    CheckBox temp = (CheckBox) radioGroup1.getChildAt(i);
+                    if (temp.isChecked()) {
+                        sum += Integer.parseInt(temp.getText().toString());
+                    }
+                }
+                textView.setText(String.valueOf(sum));
+            }
+        });
 
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            disableOthers(buttonView.getId());
-            Log.e(TAG, "您最喜欢的职业是: " + buttonView.getText().toString());
-            buttonView.setTextColor(getResources().getColor(R.color.colorPrimary));
-        } else {
-            buttonView.setTextColor(Color.BLACK);
-        }
-    }
-
-    private void disableOthers(int viewId) {
-        if (R.id.radio_button1 != viewId && radioButton1.isChecked()) {
-            radioButton1.setChecked(false);
-        }
-        if (R.id.radio_button2 != viewId && radioButton2.isChecked()) {
-            radioButton2.setChecked(false);
-        }
-        if (R.id.radio_button3 != viewId && radioButton3.isChecked()) {
-            radioButton3.setChecked(false);
-        }
+        checkBox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                int sum = 0;
+                for (int i = 0; i < radioGroup1.getChildCount(); i++) {
+                    CheckBox temp = (CheckBox) radioGroup1.getChildAt(i);
+                    if (temp.isChecked()) {
+                        sum += Integer.parseInt(temp.getText().toString());
+                    }
+                }
+                textView.setText(String.valueOf(sum));
+            }
+        });
+        checkBox3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                int sum = 0;
+                for (int i = 0; i < radioGroup1.getChildCount(); i++) {
+                    CheckBox temp = (CheckBox) radioGroup1.getChildAt(i);
+                    if (temp.isChecked()) {
+                        sum += Integer.parseInt(temp.getText().toString());
+                    }
+                }
+                textView.setText(String.valueOf(sum));
+            }
+        });
     }
 
     private void getYourFavorite(int buttonId) {
